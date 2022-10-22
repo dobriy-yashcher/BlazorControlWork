@@ -1,0 +1,25 @@
+﻿@using RegistrationAuthorizationCore;
+
+<EditForm Model="@user">
+    <p>Login:</p> <InputText @bind-Value="@user.Login" @onchange="@((ChangeEventArgs e) => user.Login = e.Value.ToString())"></InputText>
+    <p>Password:</p> <InputText @bind-Value="@user.Password" @onchange="@((ChangeEventArgs e) => user.Password = e.Value.ToString())"></InputText>
+    
+
+    <p>Repeat password:</p> <InputText @bind-Value="@user.repPassword" @onchange="@((ChangeEventArgs e) => user.repPassword = e.Value.ToString())"></InputText>
+    <p>Name:</p> <InputText @bind-Value="@user.Name" @onchange="@((ChangeEventArgs e) => user.Name = e.Value.ToString())"></InputText>
+    <p>Surname:</p> <InputText @bind-Value="@user.Surname" @onchange="@((ChangeEventArgs e) => user.Surname = e.Value.ToString())"></InputText>
+    <p>E-Mail:</p> <InputText @bind-Value="@user.Mail" @onchange="@((ChangeEventArgs e) => user.Mail = e.Value.ToString())"></InputText>
+    <br />
+</EditForm>
+
+<button class="btn btn-primary" name="Sing up!" @onclick="AddToBase" title="Sing up!" size=/>
+
+
+@code {
+    User user = new User();
+
+    public void AddToBase()
+    {
+        MongoDb.AddToDataBase(user);
+    }
+}
